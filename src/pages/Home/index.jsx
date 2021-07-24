@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {Carousel, CarouselTitle, Container, Logo, Map, Search, Wrapper} from './styles';
+import {Carousel, CarouselTitle, Container, Logo, Search, Wrapper} from './styles';
 import logo from '../../assets/logo.svg';
 import TextField, {Input} from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 import restaurante from '../../assets/restaurante-fake.png';
-import {Card, RestaurantCard, Modal} from '../../components';
+import {Card, RestaurantCard, Modal, Map} from '../../components';
 
 
 export default function Home() {
     const [inputValue, setInputValue] = useState('');
+    const [query, setQuery] = useState('');
     const [modalOpened, setModalOpened] = useState(false);
     const settings = {
         dots: false,
@@ -18,6 +19,12 @@ export default function Home() {
         slidesToScroll: 4,
         adaptiveHeight: true,
     };
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            setQuery(inputValue);
+        }
+    }
 
     return (
       <Wrapper>
@@ -30,7 +37,9 @@ export default function Home() {
                     trailingIcon={<MaterialIcon role="button" icon="search"/>}
                   ><Input
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.currentTarget.value)}/>
+                    onChange={(e) => setInputValue(e.currentTarget.value)}
+                    onKeyPress={handleKeyPress}
+                  />
                   </TextField>
                   <CarouselTitle>Restaurantes na área</CarouselTitle>
                   <Carousel {...settings}>
@@ -46,7 +55,7 @@ export default function Home() {
               </Search>
               <RestaurantCard/>
           </Container>
-          <Map/>
+          <Map query={query}/>
           <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}/>
       </Wrapper>
     );
