@@ -8,9 +8,10 @@ export const Wrapper = styled.div`
 
 export const Container = styled.aside`
   background-color: ${(props) => props.theme.colors.background};
-  width: 360px;
+  width: 400px;
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const Search = styled.section`
@@ -44,4 +45,25 @@ export const CarouselTitle = styled.h1`
   font-weight: bold;
   line-height: 29px;
   margin: 16px 0;
+`;
+
+export const ModalTitle = styled.p`
+  margin-bottom: 10px;
+  letter-spacing: .1px;
+  font-family: ${(props) => props.theme.fonts.regular};
+  color: ${(props) => props.theme.colors.text};
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 29px;
+`;
+
+export const ModalContent = styled.p`
+  margin-bottom: 10px;
+  letter-spacing: .15px;
+  font-family: ${(props) => props.theme.fonts.regular};
+  color: ${(props) => props.theme.colors.text};
+  text-transform: none;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 19px;
 `;

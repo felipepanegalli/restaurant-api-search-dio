@@ -43,4 +43,5 @@ export const Photo = styled.img`
   border-radius: 6px;
   object-fit: cover;
   margin-left: 5px;
+  display: ${props => props.imageLoaded ? 'block' : 'none'};
 `;
