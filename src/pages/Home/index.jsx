@@ -82,7 +82,7 @@ export default function Home() {
                     <ModalTitle>{restaurantSelected?.name}</ModalTitle>
                     <ModalContent>{restaurantSelected?.formatted_phone_number}</ModalContent>
                     <ModalContent>{restaurantSelected?.formatted_address}</ModalContent>
-                    <ModalContent>{restaurantSelected?.opening_hours?.open_now ? 'Aberto agora' : 'Fechado'}</ModalContent>
+                    <ModalContent>{restaurantSelected?.opening_hours?.isOpen() ? 'Aberto agora' : 'Fechado'}</ModalContent>
                 </>
               ) : (
                 <>
